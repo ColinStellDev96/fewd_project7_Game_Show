@@ -82,14 +82,14 @@ button {
   height: 65px;
   width: 65px;
   padding: 20px 1px 0 1px;
-  margin-right: 2px;
+  margin: 10px 2px 10px 2px;
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
 }
 
 .space {
-  width: 15px;
+  width: 25px;
 }
 
 .show {
@@ -117,6 +117,7 @@ button {
   background: #FFFFFF;
   border-radius: 5px;
   font-size: var(--font-size-medium);
+  cursor: pointer;
 }
 
 /* Overlay */
