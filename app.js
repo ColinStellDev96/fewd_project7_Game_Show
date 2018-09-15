@@ -1,6 +1,9 @@
 const overlay = document.getElementById('overlay');
 const startGame = overlay.querySelector('a');
 const qwerty = document.getElementById('qwerty');
+console.log(qwerty);
+const keyrow = qwerty.querySelectorAll('button');
+console.log(keyrow);
 const phrase = document.getElementById('phrase');
 const ul = phrase.firstElementChild;
 
@@ -12,7 +15,7 @@ startGame.addEventListener('click', () => {
 
 // phrases are taken from various Thrice lyrics
 let phrases = [
-    'Together we will fight the long defeat',
+    'Are you ready for my soul',
     'I am learning how to lean into the grey',
     'Stay deep in the moment and just breath',
     'Holding onto a branch in the river',
@@ -42,7 +45,8 @@ addPhraseToDisplay = (array) => {
         }
     }
 }
-
 addPhraseToDisplay(phraseArray);
 
-
+qwerty.addEventListener('click', () => {
+    console.log("clicked");
+});
