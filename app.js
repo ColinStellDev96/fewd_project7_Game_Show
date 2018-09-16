@@ -29,7 +29,7 @@ getRandomPhrase = (array) => {
 }
 
 const phraseArray = getRandomPhrase(phrases);
-console.log(phraseArray);
+// console.log(phraseArray);
 
 // Adding Phrase from Random Phrase function to the Display
 addPhraseToDisplay = (array) => {
@@ -46,6 +46,17 @@ addPhraseToDisplay = (array) => {
     }
 }
 addPhraseToDisplay(phraseArray);
+
+checkletter = (guess) => {
+    let letter = [];
+    for (i = 0; i < phraseArray.length; i ++) {
+        console.log(phraseArray);
+        if (phraseArray[i].className = "letter") {
+            letter.push(phraseArray[i]);
+            // console.log(letter);
+        }
+    }
+}
 
 qwerty.addEventListener('click', () => {
     console.log("clicked");
