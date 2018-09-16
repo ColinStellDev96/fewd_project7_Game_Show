@@ -3,11 +3,8 @@ const startGame = overlay.querySelector('a');
 const qwerty = document.getElementById('qwerty');
 console.log(qwerty);
 const keyrow = qwerty.querySelectorAll('button');
-console.log(keyrow);
 const phrase = document.getElementById('phrase');
 const ul = phrase.firstElementChild;
-
-let missed = 0;
 
 startGame.addEventListener('click', () => {
     overlay.style.display = "none";
@@ -29,7 +26,7 @@ getRandomPhrase = (array) => {
 }
 
 const phraseArray = getRandomPhrase(phrases);
-// console.log(phraseArray);
+
 
 // Adding Phrase from Random Phrase function to the Display
 addPhraseToDisplay = (array) => {
@@ -47,17 +44,22 @@ addPhraseToDisplay = (array) => {
 }
 addPhraseToDisplay(phraseArray);
 
-checkletter = (guess) => {
-    let letter = [];
-    for (i = 0; i < phraseArray.length; i ++) {
-        console.log(phraseArray);
-        if (phraseArray[i].className = "letter") {
-            letter.push(phraseArray[i]);
-            // console.log(letter);
+// Button Clicked & Check Letter Function/Event Listeners
+checkLetter = (guess) => {
+    const letter = document.querySelectorAll('letter');
+    for (i = 0; i < letter.length; i += 1) {
+        if (letter[i].value === guess){
+            let correct = letter[i].classList.add('show');
+            return correct;
+        } else {
+            return null;
         }
     }
 }
 
-qwerty.addEventListener('click', () => {
-    console.log("clicked");
-});
+qwerty.addEventListener('click', (event) => {
+    let guess = event.target.value;
+    checkLetter(guess);
+})
+
+let missed = 0;
