@@ -5,9 +5,7 @@ const phrase = document.getElementById('phrase');
 const ul = phrase.firstElementChild;
 const scoreboard = document.getElementById('scoreboard');
 const ol = scoreboard.querySelector('ol');
-const tries = ol.querySelectorAll('li');
 const imgs = scoreboard.querySelectorAll('img');
-console.log(imgs);
 
 startGame.addEventListener('click', () => {
     overlay.style.display = "none";
@@ -48,9 +46,8 @@ addPhraseToDisplay = (array) => {
 addPhraseToDisplay(phraseArray);
 
 // Button Clicked & Check Letter Function/Event Listeners
-let letterFound = null;
-
 checkLetter = (guess) => {
+    let letterFound = null;
     const letter = document.getElementsByClassName('letter');
     for (i = 0; i < letter.length; i += 1) {
         if (letter[i].textContent.toLowerCase() === guess){
@@ -67,14 +64,10 @@ qwerty.addEventListener('click', (event) => {
     if (event.target.type === 'submit') {
         event.target.classList.add('chosen');
     }
-
     let guess = event.target.textContent;
-    checkLetter(guess);
-
-    if (letterFound == null) {
-            for (i < 0; i < imgs.length; i+= 1) {
-            imgs[i].src="images/lostHeart.png";
-
-        }
+    const match = checkLetter(guess);
+    if (match != true) {
+        missed ++;
+        imgs[imgs.length - missed].src="images/lostHeart.png" 
     }
 })
