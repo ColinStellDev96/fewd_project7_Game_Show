@@ -47,11 +47,14 @@ addPhraseToDisplay(phraseArray);
 // Button Clicked & Check Letter Function/Event Listeners
 checkLetter = (guess) => {
     const letter = document.getElementsByClassName('letter');
+    let letterFound = null;
     for (i = 0; i < letter.length; i += 1) {
         if (letter[i].textContent.toLowerCase() === guess){
             letter[i].classList.add('show');
+            letterFound = true;
         }
     }
+    return letterFound;
 }
 
 qwerty.addEventListener('click', (event) => {
@@ -59,8 +62,6 @@ qwerty.addEventListener('click', (event) => {
     checkLetter(guess);
     if (event.target.type === 'submit') {
         event.target.classList.add('chosen');
-    } else {
-        event.target.classList.remove('chosen');
     }
 })
 
