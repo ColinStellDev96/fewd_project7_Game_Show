@@ -45,20 +45,22 @@ addPhraseToDisplay = (array) => {
 addPhraseToDisplay(phraseArray);
 
 // Button Clicked & Check Letter Function/Event Listeners
+
+
+
 checkLetter = (guess) => {
-    const letter = document.querySelectorAll('letter');
+    const letter = document.getElementsByClassName('letter');
+    console.log(letter);
     for (i = 0; i < letter.length; i += 1) {
-        if (letter[i].value === guess){
-            let correct = letter[i].classList.add('show');
-            return correct;
-        } else {
-            return null;
+        console.log(letter[i]);
+        if (letter[i].textContent.toLowerCase() === guess){
+            letter[i].classList.add('show');
         }
     }
 }
 
 qwerty.addEventListener('click', (event) => {
-    let guess = event.target.value;
+    let guess = event.target.textContent;
     checkLetter(guess);
 })
 
