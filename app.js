@@ -6,7 +6,8 @@ const ul = phrase.firstElementChild;
 const scoreboard = document.getElementById('scoreboard');
 const ol = scoreboard.querySelector('ol');
 const tries = ol.querySelectorAll('li');
-console.log(tries);
+const imgs = scoreboard.querySelectorAll('img');
+console.log(imgs);
 
 startGame.addEventListener('click', () => {
     overlay.style.display = "none";
@@ -71,10 +72,9 @@ qwerty.addEventListener('click', (event) => {
     checkLetter(guess);
 
     if (letterFound == null) {
-            console.log(tries);
-            for (i < 0; i < ol.length; i+= 1) {
-                let li = ol[i];
-                ol.removeChild(ol.childNodes[0]);
+            for (i < 0; i < imgs.length; i+= 1) {
+            imgs[i].src="images/lostHeart.png";
+
         }
     }
 })
