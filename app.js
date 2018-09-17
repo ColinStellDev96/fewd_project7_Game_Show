@@ -12,11 +12,11 @@ startGame.addEventListener('click', () => {
 
 // phrases are taken from various Thrice lyrics
 let phrases = [
-    'Are you ready for my soul',
-    'I am learning how to lean into the grey',
-    'Stay deep in the moment and just breath',
-    'Holding onto a branch in the river',
-    'I will meet you there beyone the pines'
+    'They Are Only Chasing Safety',
+    'Define The Great Line',
+    'Lost In The Sound of Seperation',
+    'O Disambiguation',
+    'Erase Me'
 ];
 
 // Get Random Phrase Function from the Phrases Array
@@ -45,14 +45,9 @@ addPhraseToDisplay = (array) => {
 addPhraseToDisplay(phraseArray);
 
 // Button Clicked & Check Letter Function/Event Listeners
-
-
-
 checkLetter = (guess) => {
     const letter = document.getElementsByClassName('letter');
-    console.log(letter);
     for (i = 0; i < letter.length; i += 1) {
-        console.log(letter[i]);
         if (letter[i].textContent.toLowerCase() === guess){
             letter[i].classList.add('show');
         }
@@ -62,6 +57,11 @@ checkLetter = (guess) => {
 qwerty.addEventListener('click', (event) => {
     let guess = event.target.textContent;
     checkLetter(guess);
+    if (event.target.type === 'submit') {
+        event.target.classList.add('chosen');
+    } else {
+        event.target.classList.remove('chosen');
+    }
 })
 
 let missed = 0;
