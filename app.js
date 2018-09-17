@@ -1,10 +1,12 @@
 const overlay = document.getElementById('overlay');
 const startGame = overlay.querySelector('a');
 const qwerty = document.getElementById('qwerty');
-console.log(qwerty);
-const keyrow = qwerty.querySelectorAll('button');
 const phrase = document.getElementById('phrase');
 const ul = phrase.firstElementChild;
+const scoreboard = document.getElementById('scoreboard');
+const ol = scoreboard.querySelector('ol');
+const tries = ol.querySelectorAll('li');
+console.log(tries);
 
 startGame.addEventListener('click', () => {
     overlay.style.display = "none";
@@ -45,24 +47,30 @@ addPhraseToDisplay = (array) => {
 addPhraseToDisplay(phraseArray);
 
 // Button Clicked & Check Letter Function/Event Listeners
+let letterFound = null;
+
 checkLetter = (guess) => {
     const letter = document.getElementsByClassName('letter');
-    let letterFound = null;
     for (i = 0; i < letter.length; i += 1) {
         if (letter[i].textContent.toLowerCase() === guess){
             letter[i].classList.add('show');
             letterFound = true;
-        }
+        } 
     }
     return letterFound;
 }
 
+let missed = 0;
+
 qwerty.addEventListener('click', (event) => {
     let guess = event.target.textContent;
-    checkLetter(guess);
+
     if (event.target.type === 'submit') {
         event.target.classList.add('chosen');
     }
+    checkLetter(guess);
+    if (letterFound == null) {
+        console.log(tries);
+        tries.parentNode.removeChild(tries);
+    }
 })
-
-let missed = 0;
