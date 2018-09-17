@@ -63,14 +63,18 @@ checkLetter = (guess) => {
 let missed = 0;
 
 qwerty.addEventListener('click', (event) => {
-    let guess = event.target.textContent;
-
     if (event.target.type === 'submit') {
         event.target.classList.add('chosen');
     }
+
+    let guess = event.target.textContent;
     checkLetter(guess);
+
     if (letterFound == null) {
-        console.log(tries);
-        tries.parentNode.removeChild(tries);
+            console.log(tries);
+            for (i < 0; i < ol.length; i+= 1) {
+                let li = ol[i];
+                ol.removeChild(ol.childNodes[0]);
+        }
     }
 })
