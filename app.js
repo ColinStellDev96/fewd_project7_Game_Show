@@ -1,4 +1,5 @@
 const overlay = document.getElementById('overlay');
+const headline = overlay.querySelector('h2');
 const startGame = overlay.querySelector('a');
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
@@ -60,14 +61,46 @@ checkLetter = (guess) => {
 
 let missed = 0;
 
-qwerty.addEventListener('click', (event) => {
-    if (event.target.type === 'submit') {
-        event.target.classList.add('chosen');
+checkWin = () => {
+    const shown = document.getElementsByClassName('show');
+    const letter = document.getElementsByClassName('letter');
+    if (letter.length === shown.length) {
+        overlay.className = "win";
+        overlay.style.display = "flex";
+        headline.textContent = "Rock On, You Crushed It!";
+        startGame.textContent = "Play Again";
+    } else if (missed === 5) {
+        overlay.className = 'lose';
+        overlay.style.display = "flex";
+        headline.textContent = "So Sad, Play Again";
+        startGame.textContent = "Try Again";
     }
+    startGame.addEventListener('click', () => {
+        overlay.className = "start";
+        missed = 0;
+        ul.textContent = '';
+        let list = document.querySelector('ul');
+        const li = list.querySelectorAll('li');
+        console.log(li);
+        li[li.length].removeAttribute("class");
+        li[li.length].removeAttribute("disabled");
+        imgs[imgs.length].src="images/liveHeart.png";
+        const phraseArray = getRandomPhrase(phrases);
+        addPhraseToDisplay(phraseArray);
+        overlay.style.display = "none";
+    });
+}
+
+qwerty.addEventListener('click', (event) => {
     let guess = event.target.textContent;
     const match = checkLetter(guess);
     if (match != true) {
         missed ++;
         imgs[imgs.length - missed].src="images/lostHeart.png" 
     }
+    if (event.target.type === 'submit') {
+        event.target.classList.add('chosen');
+        event.target.disabled = "true";
+    }
+    checkWin();
 })
