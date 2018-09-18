@@ -7,7 +7,7 @@ const phrase = document.getElementById('phrase');
 const ul = phrase.firstElementChild;
 const scoreboard = document.getElementById('scoreboard');
 const ol = scoreboard.querySelector('ol');
-const imgs = scoreboard.querySelectorAll('img');
+const hands = scoreboard.querySelectorAll('i');
 
 startGame.addEventListener('click', () => {
     overlay.style.display = "none";
@@ -15,11 +15,16 @@ startGame.addEventListener('click', () => {
 
 // phrases are taken from various Thrice lyrics
 let phrases = [
-    'They Are Only Chasing Safety',
-    'Define The Great Line',
-    'Lost In The Sound of Seperation',
-    'O Disambiguation',
-    'Erase Me'
+    'Only Us',
+    'The Grey',
+    'The Dark',
+    'Just Breath',
+    'Everything Belongs',
+    'My Soul',
+    'A Branch In The River',
+    'Hold Up A Light',
+    'Blood on Blood',
+    'Beyond The Pines'
 ];
 
 // Get Random Phrase Function from the Phrases Array
@@ -80,12 +85,13 @@ checkWin = () => {
         overlay.className = "start";
         missed = 0;
         ul.textContent = '';
-        console.log(buttons);
-        buttons.forEach((buttons) => {
-            buttons.removeAttribute('chosen');
-            buttons.removeAttribue('disabled');
-        });
-        imgs[imgs.length - missed].src="images/liveHeart.png";
+        for (i = 0; i < buttons.length; i += 1) {
+            buttons[i].removeAttribute('class');
+            buttons[i].removeAttribute('disabled');
+        } 
+        for (i = 0; i < hands.length; i += 1) {
+            hands[i].className="fas fa-hand-paper";
+        }
         const phraseArray = getRandomPhrase(phrases);
         addPhraseToDisplay(phraseArray);
         overlay.style.display = "none";
@@ -100,7 +106,7 @@ qwerty.addEventListener('click', (event) => {
         const match = checkLetter(guess);
         if (match != true) {
         missed ++;
-        imgs[imgs.length - missed].src="images/lostHeart.png" 
+        hands[hands.length - missed].className="far fa-hand-paper";  
        }
     checkWin();
     }

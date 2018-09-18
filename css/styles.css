@@ -4,16 +4,16 @@
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
-  --color-lose: #D94545;
-  --color-start: #5b85b7;
-  --color-neutral: #445069;
+  --color-win: #1e1e1e;
+  --color-lose: #973430;
+  --color-start: #1e1e1e;
+  --color-neutral: #d0ba92;
   --color-neutral-light: #D2D2D2;
-  --color-keys: #37474F;
+  --color-keys: #d0ba92;
   --color-keys-light: #E5E5E5;
   --font-size-large: 60px;
   --font-size-medium: 20px;
-  --transition: all .2s ease-in-out;
+  --transition: all .8s ease-in-out;
 }
 
 /* main */
@@ -27,6 +27,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-color: var(--color-start);
 }
 
 li, ol, ul {
@@ -48,7 +49,7 @@ button {
   padding: .5rem 1rem;
   color: var(--color-keys);
   font-size: var(--font-size-medium);
-  background-color: var(--color-keys-light);
+  background-color: #973430;
   border-radius: 5px;
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
@@ -72,7 +73,7 @@ button {
 /* Title */
 
 .header {
-  color: var(--color-start);
+  color: var(--color-neutral);
 }
 
 /* Phrase */
@@ -93,8 +94,12 @@ button {
 }
 
 .show {
-  color: #000;
-  background-color: #76CE82;
+  color: #d0ba92;
+  background-color: #973430;
+  font-size: var(--font-size-medium);
+  -webkit-transition: var(--transition);
+  -o-transition: var(--transition);
+  transition: var(--transition);
 }
 
 #phrase {
@@ -113,13 +118,13 @@ button {
   background: var(--color-neutral);
   border-radius: 5px;
   font-size: var(--font-size-medium);
-  color: #FFFFFF;
+  color: #973430;
 }
 
 .btn__reset {
   padding: 8px;
   margin: 50px auto;
-  background: #FFFFFF;
+  background: #d0ba92;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   cursor: pointer;
@@ -141,7 +146,7 @@ button {
 }
 
 .title {
-  color: #FFF;
+  color: #d0ba92;
 }
 
 .start {
@@ -149,7 +154,7 @@ button {
 }
 
 .start a {
-  color: var(--color-start);
+  color: #973430;
 }
 
 .win {
@@ -157,7 +162,7 @@ button {
 }
 
 .win a {
-  color: var(--color-win);
+  color: #973430;
 }
 
 .lose {
@@ -165,5 +170,15 @@ button {
 }
 
 .lose a {
-  color: var(--color-lose);
+  color: #973430;
+}
+
+/* Custom Hand Icons */
+i {
+  font-size:var(--font-size-large);
+  padding: 0 10px;
+  color: #973430;
+  -webkit-transition: var(--transition);
+  -o-transition: var(--transition);
+  transition: var(--transition);
 }
