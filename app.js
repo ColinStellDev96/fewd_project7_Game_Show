@@ -6,12 +6,7 @@ const buttons = qwerty.querySelectorAll('button');
 const phrase = document.getElementById('phrase');
 const ul = phrase.firstElementChild;
 const scoreboard = document.getElementById('scoreboard');
-const ol = scoreboard.querySelector('ol');
 const hands = scoreboard.querySelectorAll('i');
-
-startGame.addEventListener('click', () => {
-    overlay.style.display = "none";
-});
 
 // phrases are taken from various Thrice lyrics
 let phrases = [
@@ -23,7 +18,7 @@ let phrases = [
     'My Soul',
     'A Branch In The River',
     'Hold Up A Light',
-    'Blood on Blood',
+    'Blood On Blood',
     'Beyond The Pines'
 ];
 
@@ -67,6 +62,7 @@ checkLetter = (guess) => {
 
 let missed = 0;
 
+// Checks to see if the User has either won or lost the game
 checkWin = () => {
     const shown = document.getElementsByClassName('show');
     const letter = document.getElementsByClassName('letter');
@@ -81,23 +77,9 @@ checkWin = () => {
         headline.textContent = "So Sad, Play Again";
         startGame.textContent = "Try Again";
     }
-    startGame.addEventListener('click', () => {
-        overlay.className = "start";
-        missed = 0;
-        ul.textContent = '';
-        for (i = 0; i < buttons.length; i += 1) {
-            buttons[i].removeAttribute('class');
-            buttons[i].removeAttribute('disabled');
-        } 
-        for (i = 0; i < hands.length; i += 1) {
-            hands[i].className="fas fa-hand-paper";
-        }
-        const phraseArray = getRandomPhrase(phrases);
-        addPhraseToDisplay(phraseArray);
-        overlay.style.display = "none";
-    });
 }
 
+// Checks which button the keyboard is clicked and based on that either adds a letter or takes away a try
 qwerty.addEventListener('click', (event) => {
     if (event.target.type === 'submit') {
         event.target.classList.add('chosen');
@@ -111,3 +93,20 @@ qwerty.addEventListener('click', (event) => {
     checkWin();
     }
 })
+
+// Starts Game & Resets the game after a win or loss
+startGame.addEventListener('click', () => {
+    overlay.className = "start";
+    missed = 0;
+    ul.textContent = '';
+    for (i = 0; i < buttons.length; i += 1) {
+        buttons[i].removeAttribute('class');
+        buttons[i].removeAttribute('disabled');
+    } 
+    for (i = 0; i < hands.length; i += 1) {
+        hands[i].className="fas fa-hand-paper";
+    }
+    const phraseArray = getRandomPhrase(phrases);
+    addPhraseToDisplay(phraseArray);
+    overlay.style.display = "none";
+});
