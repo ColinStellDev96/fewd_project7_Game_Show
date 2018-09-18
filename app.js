@@ -1,7 +1,8 @@
 const overlay = document.getElementById('overlay');
 const headline = overlay.querySelector('h2');
 const startGame = overlay.querySelector('a');
-const qwerty = document.getElementById('qwerty');
+const qwerty = document.querySelector('#qwerty');
+const buttons = qwerty.querySelectorAll('button');
 const phrase = document.getElementById('phrase');
 const ul = phrase.firstElementChild;
 const scoreboard = document.getElementById('scoreboard');
@@ -79,12 +80,12 @@ checkWin = () => {
         overlay.className = "start";
         missed = 0;
         ul.textContent = '';
-        let list = document.querySelector('ul');
-        const li = list.querySelectorAll('li');
-        console.log(li);
-        li[li.length].removeAttribute("class");
-        li[li.length].removeAttribute("disabled");
-        imgs[imgs.length].src="images/liveHeart.png";
+        console.log(buttons);
+        buttons.forEach((buttons) => {
+            buttons.removeAttribute('chosen');
+            buttons.removeAttribue('disabled');
+        });
+        imgs[imgs.length - missed].src="images/liveHeart.png";
         const phraseArray = getRandomPhrase(phrases);
         addPhraseToDisplay(phraseArray);
         overlay.style.display = "none";
@@ -92,15 +93,15 @@ checkWin = () => {
 }
 
 qwerty.addEventListener('click', (event) => {
-    let guess = event.target.textContent;
-    const match = checkLetter(guess);
-    if (match != true) {
-        missed ++;
-        imgs[imgs.length - missed].src="images/lostHeart.png" 
-    }
     if (event.target.type === 'submit') {
         event.target.classList.add('chosen');
         event.target.disabled = "true";
-    }
+        let guess = event.target.textContent;
+        const match = checkLetter(guess);
+        if (match != true) {
+        missed ++;
+        imgs[imgs.length - missed].src="images/lostHeart.png" 
+       }
     checkWin();
+    }
 })
